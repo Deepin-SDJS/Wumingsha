@@ -1,0 +1,28 @@
+ # 本地扩展，不进仓库，但本地保留
+extension/
+手牌美化素材，自行替换/
+image/
+# 可执行文件和库
+*.exe
+*.dll
+*.so
+*.dylib
+*.pak
+*.bin
+*.dat
+
+# Electron / 运行时目录
+locales/
+swiftshader/
+resources/
+
+# 卸载程序
+unins*.exe
+unins*.dat
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
+# 日志
+*.log
