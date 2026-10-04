@@ -1575,7 +1575,7 @@ game.import('card',function(lib,game,ui,get,ai,_status){
 					return player.countCards('h')>0;
 				},
 				trigger:{
-					player:'phaseDiscardAfter',
+					player:'phaseJieshuBegin',
 				},
 				content:function(){
 					"step 0"
@@ -1821,8 +1821,8 @@ game.import('card',function(lib,game,ui,get,ai,_status){
 			yuxi:'玉玺',
 			yuxi_info:'锁定技。若你有明置的武将牌，则：①你的势力视为唯一的大势力。②摸牌阶段开始时，你令额定摸牌数+1。③出牌阶段开始时，你视为使用【知己知彼】',
 			xietianzi:'挟令',
-			xietianzi_info:'出牌阶段，对自己使用。你结束出牌阶段。本回合的弃牌阶段结束时，你可以弃置一张手牌，获得一个额外的回合。',
-			xietianzi_info_guozhan:'出牌阶段，对身为大势力角色的自己使用。你结束出牌阶段。本回合的弃牌阶段结束时，你可以弃置一张手牌，获得一个额外的回合。',
+			xietianzi_info:'出牌阶段，对自己使用。你结束出牌阶段。结束阶段，你可以弃置一张手牌，获得一个额外的回合。',
+			xietianzi_info_guozhan:'出牌阶段，对身为大势力角色的自己使用。你结束出牌阶段。结束阶段，你可以弃置一张手牌，获得一个额外的回合。',
 			shuiyanqijunx:'水淹七军',
 			shuiyanqijunx_info:'出牌阶段，对一名其他角色使用。目标角色选择一项：⒈弃置装备区里的所有牌（至少一张）。⒉受到你造成的1点雷电伤害',
 			shuiyanqijunx_info_guozhan:'出牌阶段，对一名装备区里有牌的其他角色使用。目标角色选择一项：⒈弃置装备区里的所有牌。⒉受到你造成的1点雷电伤害',

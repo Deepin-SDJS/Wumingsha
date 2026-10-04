@@ -32305,6 +32305,27 @@
 					player.maxHp=info[2];
 					player.hujia=info[3];
 					player.update(info[0]);
+					// 部分 UI 扩展会在 update 内用 countCards('h') 重算手牌数，
+					// 但回放并未完整还原手牌区，这里用录像记录的值覆盖回去
+					if(player.node&&player.node.count&&typeof info[0]=='number'){
+						var numh=info[0];
+						if(numh>=10){
+							player.node.count.dataset.condition='low';
+						}
+						else if(numh>5){
+							player.node.count.dataset.condition='higher';
+						}
+						else if(numh>2){
+							player.node.count.dataset.condition='high';
+						}
+						else if(numh>0){
+							player.node.count.dataset.condition='mid';
+						}
+						else{
+							player.node.count.dataset.condition='none';
+						}
+						player.node.count.innerHTML=numh;
+					}
 				}
 				else{
 					console.log(player);
