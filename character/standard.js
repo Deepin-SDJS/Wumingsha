@@ -312,6 +312,10 @@ game.import('character',function(lib,game,ui,get,ai,_status){
 						var trigger=_status.event.getTrigger();
 						var player=_status.event.player;
 						var judging=_status.event.judging;
+						if(get.mode()=='guozhan'&&trigger.parent&&trigger.parent.name=='huituo'&&
+							get.color(card)=='red'&&get.color(judging)!='red'&&trigger.judge(card)>trigger.judge(judging)){
+							return 10;
+						}
 						var result=trigger.judge(card)-trigger.judge(judging);
 						var attitude=get.attitude(player,trigger.player);
 						if(attitude==0||result==0) return 0;

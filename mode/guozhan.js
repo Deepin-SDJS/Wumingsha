@@ -11822,16 +11822,35 @@ jingce:{
 			},
 			gzxianfu:{
 				audio:'xianfu',
-				trigger:{player:'showCharacterAfter'},
+				trigger:{
+					player:'showCharacterAfter',
+					global:'dieBegin',
+				},
+				priority:1,
 				forced:true,
-				filter:function(event,player){
+				filter:function(event,player,name){
+					if(name=='dieBegin'){
+						return player.storage.gzxianfu&&event.player!=player&&player.storage.xianfu2&&player.storage.xianfu2.contains(event.player);
+					}
 					return !player.storage.gzxianfu&&event.toShow.contains('gz_xizhicai');
 				},
 				content:function(){
 					'step 0'
-					player.storage.gzxianfu=true;
+					if(trigger.name=='die'){
+						player.storage.xianfu2.remove(trigger.player);
+					}
+					else{
+						player.storage.gzxianfu=true;
+					}
+					event.targets=game.filterPlayer(function(target){
+						return target!=player&&target.isAlive()&&(!player.storage.xianfu2||!player.storage.xianfu2.contains(target));
+					});
+					if(!event.targets.length){
+						event.finish();
+						return;
+					}
 					player.chooseTarget('请选择【先辅】的目标',lib.translate.gzxianfu_info,true,function(card,player,target){
-						return target!=player&&(!player.storage.xianfu2||!player.storage.xianfu2.contains(target));
+						return target!=player&&target.isAlive()&&(!player.storage.xianfu2||!player.storage.xianfu2.contains(target));
 					}).set('ai',function(target){
 						var att=get.attitude(_status.event.player,target);
 						if(att>0) return att+1;
